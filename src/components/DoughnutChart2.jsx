@@ -29,12 +29,16 @@ const DoughnutChart2 = () => {
 
     datasets: [
       {
-        label: "My First Dataset",
+        label: 'title',
         data: charts.assignment_specialist_count?.map((item) => item.count),
         backgroundColor: [
-          "Lightblue",
-          "Blue",
+          "#36b9cc",
+          "#4e73df",
           "Lightgreen",
+          "#1cc88a",
+          'crimson',
+          '#e74a3b',
+          'orange',
           "lightpink",
           "pink",
           "yellowgreen",
@@ -45,22 +49,18 @@ const DoughnutChart2 = () => {
           "violet",
           "purple",
         ],
-        borderWidth: 1,
+        cutout: 115,
+        radius: 85,
+        borderRadius: 3,
+        
       },
     ],
   };
-  let options = {
-    maintainAspectRatio: false,
-    legend: {
-      labels: {
-        fontSize: 25,
-      },
-    },
-  };
+ 
   return (
-    <div>
+    <div className="box">
       <h2>Specialist Counts</h2>
-      <Doughnut data={chartData} height={400} options={options} />
+      <Doughnut data={chartData}/>
     </div>
   );
 };
