@@ -49,7 +49,7 @@ const DoughnutChart2 = () => {
           "violet",
           "purple",
         ],
-        cutout: 115,
+        cutout: 85,
         radius: 85,
         borderRadius: 3,
         

@@ -26,7 +26,7 @@ const DoughnutChart = () => {
 
   const chartData = {
     labels: charts.assignment_questionnaire_count?.map(
-      (item) => item.title
+      (item) => item.code
     ) || ["lightblue", "blue", "green"],
     datasets: [
       {

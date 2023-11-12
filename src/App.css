@@ -1,18 +1,19 @@
 
 .app{
     display: flex;
-    width: 1280px;
+    max-width: 1280px;
     min-height:  100vh;
     justify-content: space-around;
     margin: auto;
     align-items: center;
+    flex-wrap: wrap;
 }
 .box{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-width: 500px;
+min-width: 440px;
 min-height: 700px;
 }
 h2{

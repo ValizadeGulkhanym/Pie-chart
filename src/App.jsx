@@ -7,7 +7,7 @@ function App() {
 
 
   return (
-    <div className='app'>
+    <div className='app sm: w-[350px] '>
   <DoughnutChart/>
   <DoughnutChart2/>
     </div>
