@@ -1,19 +1,17 @@
-
-import './App.css'
-import DateChart from './components/DateChart'
-import DoughnutChart from './components/DoughnutChart'
-import DoughnutChart2 from './components/DoughnutChart2'
+import "./App.css";
+import DateChart from "./components/DateChart";
+import DoughnutChart from "./components/DoughnutChart";
 
 function App() {
-
-
   return (
-    <div className='app sm: w-[350px] '>
-  <DoughnutChart/>
-  <DoughnutChart2/>
-  <DateChart/>
+    <div className="sm: w-[350px] bg-[black]">
+      <DoughnutChart />
+      
+      <DateChart />
+   
+    
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  LineElement,
+  PointElement,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+} from "chart.js";
+import { Line, Bar } from "react-chartjs-2";
 import axios from "axios";
+import DropDown from "./Dropdown";
 
-ChartJS.register(Tooltip, Legend, ArcElement);
+ChartJS.register(
+  BarElement,
+  LineElement,
+  PointElement,
+  CategoryScale,
+  LinearScale
+);
 const DateChart = () => {
   const [charts, setCharts] = useState([]);
 
@@ -20,26 +34,45 @@ const DateChart = () => {
     }
     getData();
   }, []);
-
+  const labels = charts.assignment_completion_duration?.map(
+    (item) => item.average_minutes
+  );
   const chartData = {
     labels: charts.assignment_date_questionnaire_count?.map(
-      (item) => item.code
+      (item) => item.month
     ),
-
     datasets: [
       {
         label: "count",
         data: charts.assignment_date_questionnaire_count?.map(
           (item) => item.count
         ),
+        fill: false,
+        borderColor: "rgb(57, 75, 230)",
+        tension: 0.1,
+      },
+    ],
+  };
+
+  const info = {
+    labels: charts.assignment_completion_duration?.map(
+      (item) => item.min_minutes
+    ),
+
+    datasets: [
+      {
+        label: "minutes",
+        data: charts.assignment_completion_duration?.map(
+          (item) => item.max_minutes
+        ),
         backgroundColor: [
+          "#e74a3b",
+          "orange",
+          "crimson",
           "#36b9cc",
           "#4e73df",
           "Lightgreen",
           "#1cc88a",
-          "crimson",
-          "#e74a3b",
-          "orange",
           "lightpink",
           "pink",
           "yellowgreen",
@@ -58,9 +91,16 @@ const DateChart = () => {
   };
 
   return (
-    <div className="box">
-      <h2>Date</h2>
-      <Doughnut data={chartData} />
+    <div className="app">
+      <div className="box ">
+        <h2>Questionnaire count per month</h2>
+        <DropDown />
+        <Line data={chartData} />
+      </div>
+      <div className="box">
+        <h2>Completion duration</h2>
+        <Bar data={info} />
+      </div>
     </div>
   );
 };
